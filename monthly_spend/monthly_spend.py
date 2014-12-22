@@ -16,9 +16,9 @@ class MonthlySpend:
     def parse_data_entry(self, data_entry):
         ret = 'ERROR'
 
-        entry = data_entry.split(' ', 2)
+        entry = data_entry.split(' ', 3)
 
-        if (len(entry) == 3):
+        if (len(entry) == 4):
             if ((int(entry[0]) >= 1) and (int(entry[0]) <= 12)):
                 ret = entry
 
@@ -41,5 +41,9 @@ class MonthlySpend:
             for d in self.data:
                 pd = self.parse_data_entry(d)
                 if (self.for_month(month, pd[1])):
-                    self.full_list.append([month, int(pd[0]), pd[2]])
+                    self.full_list.append([month, int(pd[0]), float(pd[2]), pd[3]])
         self.full_list.sort(key = operator.itemgetter(0, 1))
+
+
+    def calculate(self, month, day, balance=0.0):
+        pass

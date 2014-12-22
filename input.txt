@@ -1,3 +1,3 @@
-1 111111111111 Test bill 1
-11 101010101010 This is my gas bill
-9 001001001001 Electric Bill
+1 111111111111 12.01 Test bill 1
+11 101010101010 23.00 This is my gas bill
+9 001001001001 123.65 Electric Bill
