@@ -1,0 +1,18 @@
+Monthly Spend
+
+The aim is to calculate how much regular spending is still pending before pay day
+
+The input will be a file containing regular transactions. This will show the transaction name and payment schedule and optionally the current balance
+
+The schedule must be the date of the month and an indication of which months the payment is valid for. One line per payment
+
+<day number> one or two digits
+<space>
+<valid flags> Twelve digits - either 0 or 1 (where 1 means valid)
+<space>
+<name of transaction>
+
+eg.
+15 100100100100 Gas Bill
+
+The output will be a number indicating either the amount still to be spent or, if the balance is provided, the amount left at pay day
