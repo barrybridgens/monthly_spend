@@ -1,6 +1,6 @@
 # Monthly spend class
 
-import operator
+import operator, datetime, sys
 
 class MonthlySpend:
 
@@ -19,7 +19,7 @@ class MonthlySpend:
         entry = data_entry.split(' ', 3)
 
         if (len(entry) == 4):
-            if ((int(entry[0]) >= 1) and (int(entry[0]) <= 12)):
+            if ((int(entry[0]) >= 1) and (int(entry[0]) <= 31)):
                 ret = entry
 
         return(ret)
@@ -46,4 +46,42 @@ class MonthlySpend:
 
 
     def calculate(self, month, day, balance=0.0):
-        pass
+        final_balance = balance
+
+        if (day > 20):
+            # process two months
+            for t in self.full_list:
+                if (t[0] == month):
+                    if ((t[1] > day) and (t[1] <= 31)):
+                        final_balance = final_balance - t[2]
+                if (month == 12):
+                    next_month = 1
+                else:
+                    next_month = month + 1
+                if (t[0] == next_month):
+                    if (t[1] <= 20):
+                        final_balance = final_balance - t[2]
+        else:
+            # process one month
+            for t in self.full_list:
+                if (t[0] == month):
+                    if ((t[1] > day) and (t[1] <= 20)):
+                        final_balance = final_balance - t[2]
+
+        return(final_balance)
+
+
+if __name__ == "__main__":
+    ms = MonthlySpend()
+    ms.read_input_file()
+    ms.create_full_list()
+
+    now = datetime.datetime.now()
+
+    balance = 0.0
+    if (len(sys.argv) > 1):
+        balance = float(sys.argv[1])
+
+    final_balance = ms.calculate(now.month, now.day, balance)
+
+    print(final_balance)
