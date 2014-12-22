@@ -10,9 +10,11 @@ The schedule must be the date of the month and an indication of which months the
 <space>
 <valid flags> Twelve digits - either 0 or 1 (where 1 means valid)
 <space>
+<amount> value of the transaction (float)
+<space>
 <name of transaction>
 
 eg.
-15 100100100100 Gas Bill
+15 100100100100 23.00 Gas Bill
 
 The output will be a number indicating either the amount still to be spent or, if the balance is provided, the amount left at pay day
