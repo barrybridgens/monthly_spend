@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # Monthly spend class
 
 import operator, datetime, sys
@@ -10,7 +12,7 @@ class MonthlySpend:
 
 
     def read_input_file(self):
-        self.data = [line.rstrip() for line in open('input.txt')]
+        self.data = [line.rstrip() for line in open('transactions.txt')]
 
 
     def parse_data_entry(self, data_entry):
